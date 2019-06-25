@@ -1,0 +1,43 @@
+package examplePackage;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchService;
+
+public class FolderWatchService {
+		 
+		    public static void main(String[] args) 
+
+		    {
+		    	//Input folder directory that the watchService will be monitoring
+		        String configDirectoryToWatch = "c:/test/new";
+		         
+		        Path toWatch = Paths.get(configDirectoryToWatch);
+		         
+		        try
+		        {
+		            System.out.println("Starting WatchService");
+		             
+		            WatchService watchService = toWatch.getFileSystem().newWatchService();
+		             
+		            JavaWatchServiceRunnable javaWatchSvcRunnable = new JavaWatchServiceRunnable(watchService);
+		            Thread th = new Thread(javaWatchSvcRunnable, "JavaWatchServiceRunnable");
+		            th.start();
+		         
+		            //Register to watch for created, deleted, and modified events
+		            toWatch.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY, 
+		                                           StandardWatchEventKinds.ENTRY_CREATE,
+		                                           StandardWatchEventKinds.ENTRY_DELETE);
+		     
+		        }
+		        
+		        catch(Exception ex) 
+		        { 
+		            System.out.println("Exception:"+ex.toString());
+		        }
+		 
+		    }
+}
+
+
