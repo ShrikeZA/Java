@@ -1,3 +1,5 @@
+//Extends fileMigration class
+
 package examplePackage;
 
 import java.nio.file.Path;
