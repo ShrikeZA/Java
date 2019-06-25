@@ -1,13 +1,14 @@
 //Moving a CSV file from one directory to another.
 
-package fileDrop;
+package examplePackage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class fileDrop { 
+
+public class exampleClass { 
 	
    public static void main(String[] args) {
 	   
