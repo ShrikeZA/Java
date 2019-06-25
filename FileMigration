@@ -1,0 +1,35 @@
+//Moving a CSV file from one directory to another.
+
+package fileDrop;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class fileDrop { 
+	
+   public static void main(String[] args) {
+	   
+      //move file from INSERT FOLDER LOCATION to INSERT FOLDER DESTINATION
+      //make sure that folder exists
+	   
+      //moveFile("INSERT FOLDER LOCATION", "INSERT FOLDER DESTINATION");
+   }
+   
+   @SuppressWarnings("unused")
+private static void moveFile(String src, String dest ) {
+	   
+      Path result = null;
+      try {
+         result =  Files.move(Paths.get(src), Paths.get(dest));
+      } catch (IOException e) {
+         System.out.println("Exception while migrating file: " + e.getMessage());
+      }
+      if(result != null) {
+         System.out.println("File migrated successfully.");
+      }else{
+         System.out.println("File migration failed.");
+      }  
+   }
+}
